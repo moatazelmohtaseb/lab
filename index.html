@@ -1,0 +1,259 @@
+< !DOCTYPE html >
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Widget Testing Page</title>
+          <style>
+            body {
+              font - family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+            .container {
+              max - width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+            h1 {
+              color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+            .widget-container {
+              border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 20px 0;
+            text-align: center;
+            background-color: #fafafa;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .widget-placeholder {
+              color: #666;
+            font-size: 18px;
+        }
+
+            .test-controls {
+              margin: 20px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+
+            .test-controls h3 {
+              margin - top: 0;
+            color: #495057;
+        }
+
+            button {
+              background - color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+            button:hover {
+              background - color: #0056b3;
+        }
+
+            .info-section {
+              background - color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+            .info-section h4 {
+              margin - top: 0;
+            color: #0066cc;
+        }
+
+            code {
+              background - color: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <h1>Widget Testing Environment</h1>
+
+            <div class="info-section">
+              <h4>📋 Testing Instructions</h4>
+              <p>This page is designed for testing widgets. You can:</p>
+              <ul>
+                <li>Load your widget in the designated area below</li>
+                <li>Test different configurations and parameters</li>
+                <li>Verify responsive behavior across different screen sizes</li>
+                <li>Check widget interactions and functionality</li>
+              </ul>
+            </div>
+
+            <div class="test-controls">
+              <h3>🧪 Test Controls</h3>
+              <button onclick="loadWidget()">Load Widget</button>
+              <button onclick="clearWidget()">Clear Widget</button>
+              <button onclick="testResponsive()">Test Responsive</button>
+              <button onclick="showDebugInfo()">Show Debug Info</button>
+            </div>
+
+            <div class="widget-container" id="widgetContainer">
+              <div class="widget-placeholder">
+                <p>🎯 Widget will be loaded here</p>
+                <p><small>Click "Load Widget" to begin testing</small></p>
+              </div>
+            </div>
+
+            <div class="widget-container">
+              <!-- Start of OpenWidget (www.openwidget.com) code -->
+              <script>
+                window.__ow = window.__ow || { };
+                window.__ow.organizationId = "46256209-2974-4a57-9815-ba957abe0e83";
+                window.__ow.integration_name = "manual_settings";
+                window.__ow.product_name = "helpdesk";
+                ;(function(n,t,c){function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) }var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on", c.call(arguments)])},once:function(){i(["once", c.call(arguments)])},off:function(){i(["off", c.call(arguments)])},get:function(){if(!e._h)throw new Error("[OpenWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call", c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.openwidget.com/openwidget.js",t.head.appendChild(n)}};!n.__ow.asyncInit&&e.init(),n.OpenWidget=n.OpenWidget||e}(window,document,[].slice))
+              </script>
+              <noscript>You need to <a href="https://www.openwidget.com/enable-javascript" rel="noopener nofollow">enable JavaScript</a> to use the communication tool powered by <a href="https://www.openwidget.com/" rel="noopener nofollow" target="_blank">OpenWidget</a></noscript>
+              <!-- End of OpenWidget code -->
+            </div>
+
+            <div class="info-section">
+              <h4>💡 Widget Integration</h4>
+              <p>To integrate your widget, you can:</p>
+              <ul>
+                <li>Include your widget script: <code>&lt;script src="your-widget.js"&gt;&lt;/script&gt;</code></li>
+                <li>Initialize the widget in the designated container</li>
+                <li>Use the test controls to interact with your widget</li>
+              </ul>
+            </div>
+
+            <div id="debugInfo" style="display: none; margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 6px;">
+              <h4>🐛 Debug Information</h4>
+              <div id="debugContent"></div>
+            </div>
+          </div>
+
+          <script>
+        // Widget testing functions
+            function loadWidget() {
+            const container = document.getElementById('widgetContainer');
+            container.innerHTML = `
+            <div style="padding: 20px; border: 1px solid #007bff; border-radius: 6px; background: white;">
+              <h3 style="color: #007bff; margin-top: 0;">Widget Loaded Successfully!</h3>
+              <p>Your widget should be initialized here.</p>
+              <p><strong>Container ID:</strong> widgetContainer</p>
+              <p><strong>Timestamp:</strong> ${new Date().toLocaleString()}</p>
+            </div>
+            `;
+        }
+
+            function clearWidget() {
+            const container = document.getElementById('widgetContainer');
+            container.innerHTML = `
+            <div class="widget-placeholder">
+              <p>🎯 Widget will be loaded here</p>
+              <p><small>Click "Load Widget" to begin testing</small></p>
+            </div>
+            `;
+        }
+
+            function testResponsive() {
+            const container = document.getElementById('widgetContainer');
+            const currentWidth = container.offsetWidth;
+
+            // Simulate different screen sizes
+            const sizes = [
+            {name: 'Mobile', width: '320px' },
+            {name: 'Tablet', width: '768px' },
+            {name: 'Desktop', width: '1200px' }
+            ];
+
+            let currentIndex = 0;
+
+            function cycleSize() {
+                const size = sizes[currentIndex];
+            container.style.maxWidth = size.width;
+            container.innerHTML = `
+            <div style="padding: 20px; border: 1px solid #28a745; border-radius: 6px; background: white;">
+              <h3 style="color: #28a745; margin-top: 0;">Responsive Test: ${size.name}</h3>
+              <p><strong>Width:</strong> ${size.width}</p>
+              <p><strong>Container Width:</strong> ${container.offsetWidth}px</p>
+              <p>Testing widget responsiveness...</p>
+            </div>
+            `;
+
+            currentIndex = (currentIndex + 1) % sizes.length;
+            }
+
+            cycleSize();
+            const interval = setInterval(cycleSize, 2000);
+
+            // Stop cycling after 6 seconds
+            setTimeout(() => {
+              clearInterval(interval);
+            container.style.maxWidth = 'none';
+            loadWidget();
+            }, 6000);
+        }
+
+            function showDebugInfo() {
+            const debugInfo = document.getElementById('debugInfo');
+            const debugContent = document.getElementById('debugContent');
+
+            const info = {
+              'User Agent': navigator.userAgent,
+            'Screen Resolution': `${screen.width}x${screen.height}`,
+            'Viewport Size': `${window.innerWidth}x${window.innerHeight}`,
+            'Container Dimensions': `${document.getElementById('widgetContainer').offsetWidth}x${document.getElementById('widgetContainer').offsetHeight}`,
+            'Current URL': window.location.href,
+            'Timestamp': new Date().toISOString()
+            };
+
+            debugContent.innerHTML = Object.entries(info)
+                .map(([key, value]) => `<p><strong>${key}:</strong> ${value}</p>`)
+            .join('');
+
+            debugInfo.style.display = debugInfo.style.display === 'none' ? 'block' : 'none';
+        }
+
+            // Auto-resize widget container on window resize
+            window.addEventListener('resize', function() {
+            const container = document.getElementById('widgetContainer');
+            if (container.querySelector('.widget-placeholder')) {
+                return; // Don't update if showing placeholder
+            }
+
+            // Trigger a re-render or update if needed
+            console.log('Window resized:', window.innerWidth, 'x', window.innerHeight);
+        });
+
+            // Console logging for debugging
+            console.log('Widget testing page loaded successfully');
+            console.log('Available functions: loadWidget(), clearWidget(), testResponsive(), showDebugInfo()');
+          </script>
+        </body>
+      </html>
+
